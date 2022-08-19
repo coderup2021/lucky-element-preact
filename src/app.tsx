@@ -6,7 +6,8 @@ import Home from './components/Home'
 import About from './components/About'
 import Search from './components/Search'
 import './styles/index.scss'
-import Button from './components/Button/index'
+import Button from './components/Button'
+import Input from './components/Input'
 
 const App: FC<any> = () => {
   const [count, setCount] = useState(0)
@@ -21,6 +22,7 @@ const App: FC<any> = () => {
       >
         测试
       </Button>
+      <Input name="xxxx" value="1234"></Input>
     </>
   )
 }

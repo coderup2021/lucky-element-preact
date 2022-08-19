@@ -1,17 +1,17 @@
 //config
-@import "variables";
+@import 'variables';
 
 //layout
-@import "reboot";
+@import 'reboot';
 
 //mixin
-@import "mixin";
+@import 'mixin';
 
 //animation
-@import "./animation";
+@import './animation';
 
 //button
-@import "../components/Button/styles";
+@import '../components/Button/styles';
 
 //menu
 // @import "../components/Menu/styles";
@@ -20,7 +20,7 @@
 // @import "../components/Icon/styles";
 
 //input
-// @import "../components/Input/style";
+@import '../components/Input/style';
 
 //autoComplete
 // @import "../components/AutoComplete/styles";
