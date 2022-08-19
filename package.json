@@ -10,6 +10,7 @@
     "format": "prettier --write ./src"
   },
   "dependencies": {
+    "classnames": "^2.3.1",
     "preact": "^10.5.13"
   },
   "devDependencies": {
@@ -26,6 +27,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "jest": "^27.1.0",
     "prettier": "^2.6.0",
+    "sass": "^1.54.4",
     "ts-jest": "^27.0.5",
     "typescript": "^4.3.2",
     "vite": "^2.5.2"
