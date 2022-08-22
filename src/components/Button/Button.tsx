@@ -1,4 +1,4 @@
-import { h, FunctionComponent as FC } from 'preact'
+import { h, FunctionComponent as FC, ComponentChildren } from 'preact'
 import classnames from 'classnames'
 
 type ButtonSize = 'lg' | 'sm'
@@ -22,7 +22,7 @@ export interface BaseButtonProps {
    * Button Type
    */
   btnType?: ButtonType
-  children: any
+  children: ComponentChildren
   /**
    * href of 'a' tag, only valid when set btnType to 'link'
    */

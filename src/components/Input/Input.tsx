@@ -1,11 +1,10 @@
 import { h, FunctionComponent as FC, VNode, JSX } from 'preact'
 import classnames from 'classnames'
-// import { IconProp } from '@fortawesome/fontawesome-svg-core'
-// import Icon from '../Icon/Icon'
+import Icon, { IconProp } from '../Icon'
 
 type InputSize = 'lg' | 'sm'
 export interface InputProps
-  extends Omit<h.JSX.HTMLAttributes, 'size' | 'onChange'> {
+  extends Omit<h.JSX.HTMLAttributes, 'icon' | 'size' | 'onChange'> {
   /**
    * 禁用Input
    */
@@ -30,6 +29,10 @@ export interface InputProps
    * Input的onChange回调函数
    */
   onChange?: (value: string) => void
+  /**
+   * Icon
+   */
+  icon?: IconProp
 }
 
 /**
@@ -48,7 +51,7 @@ export const Input: FC<InputProps> = (props) => {
     style,
     disabled,
     size,
-    // icon,
+    icon,
     prepend,
     append,
     onChange,
@@ -78,11 +81,11 @@ export const Input: FC<InputProps> = (props) => {
   return (
     <div className={classes} style={style} data-testid="test-input-wrapper">
       {prepend && <div className="lucky-input-group-prepend">{prepend}</div>}
-      {/* {icon && (
+      {icon && (
         <div className="icon-wrapper">
           <Icon icon={icon} title={`title-${icon}`} />
         </div>
-      )} */}
+      )}
       <input
         className="lucky-input-inner"
         disabled={disabled}
