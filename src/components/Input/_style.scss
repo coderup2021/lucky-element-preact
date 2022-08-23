@@ -17,6 +17,17 @@
       color: $input-placeholder-color;
     }
   }
+  .lucky-input-group-error-info {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    color: $danger;
+    align-items: center;
+  }
 }
 .icon-wrapper + .lucky-input-inner {
   padding-right: 35px;
@@ -100,4 +111,25 @@
   padding: $input-padding-y-lg $input-padding-x-lg;
   font-size: $input-font-size-lg;
   border-radius: $input-border-radius-lg;
+}
+
+.input-group-error .lucky-input-inner {
+  border-color: $danger;
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($danger, 0.25);
+  }
+}
+.lucky-input-group-tail {
+  display: flex;
+  align-items: center;
+  padding: $input-padding-y $input-padding-x;
+  margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
+  margin-left: 10; // Allow use of <label> elements by overriding our default margin-bottom
+  font-size: $input-font-size; // Match inputs
+  font-weight: $font-weight-normal;
+  line-height: $input-line-height;
+  color: $input-group-addon-color;
+  text-align: center;
+  white-space: nowrap;
 }

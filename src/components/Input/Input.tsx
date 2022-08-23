@@ -1,6 +1,7 @@
-import { h, FunctionComponent as FC, VNode, JSX } from 'preact'
+import { h, FunctionComponent as FC, VNode, JSX, ComponentChild } from 'preact'
 import classnames from 'classnames'
-import Icon, { IconProp } from '../Icon'
+import { ErrorInfo } from '../Form/async-validator'
+// import Icon, { IconProp } from '../Icon'
 
 type InputSize = 'lg' | 'sm'
 export interface InputProps
@@ -29,10 +30,15 @@ export interface InputProps
    * Input的onChange回调函数
    */
   onChange?: (value: string) => void
+
   /**
-   * Icon
+   * Input的尾部的组件
    */
-  icon?: IconProp
+  tail?: ComponentChild
+  /**
+   * Input组件校验的错误信息
+   */
+  error?: ErrorInfo
 }
 
 /**
@@ -51,13 +57,13 @@ export const Input: FC<InputProps> = (props) => {
     style,
     disabled,
     size,
-    icon,
     prepend,
     append,
     onChange,
+    tail,
+    error,
     ...restProps
   } = props
-
   const fixedControlledValue = (value: any) => {
     if (value === undefined || value === null) {
       return ''
@@ -74,6 +80,7 @@ export const Input: FC<InputProps> = (props) => {
     'input-group': prepend || append,
     'input-group-prepend': prepend,
     'input-group-append': append,
+    'input-group-error': error,
   })
   const handleChange: JSX.GenericEventHandler<HTMLInputElement> = (ev) => {
     typeof onChange === 'function' && onChange(ev.currentTarget.value)
@@ -81,11 +88,11 @@ export const Input: FC<InputProps> = (props) => {
   return (
     <div className={classes} style={style} data-testid="test-input-wrapper">
       {prepend && <div className="lucky-input-group-prepend">{prepend}</div>}
-      {icon && (
+      {/* {icon && (
         <div className="icon-wrapper">
           <Icon icon={icon} title={`title-${icon}`} />
         </div>
-      )}
+      )} */}
       <input
         className="lucky-input-inner"
         disabled={disabled}
@@ -93,6 +100,8 @@ export const Input: FC<InputProps> = (props) => {
         {...restProps}
       />
       {append && <div className="lucky-input-group-append">{append}</div>}
+      {tail && <div className="lucky-input-group-tail">{tail}</div>}
+      {error && <div className="lucky-input-group-error-info">{error}</div>}
     </div>
   )
 }

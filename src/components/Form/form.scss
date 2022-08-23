@@ -1,0 +1,23 @@
+.mnt-form{
+	display: flex;
+
+	.mnt-form-item{
+		.mnt-form-item-label{
+		}
+		.mnt-form-item-content{
+			
+		}
+	}
+}
+
+.mnt-form-horizontal{
+	flex-direction:column;
+}
+
+.mnt-form-inline{
+	flex-direction:row;
+}
+
+.mnt-form-vertical{
+	flex-direction:column;
+}
