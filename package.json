@@ -1,22 +1,46 @@
 {
-  "name": "vite-jest-setup",
-  "version": "0.0.0",
+  "name": "lucky-preact-element",
+  "version": "0.1.0",
+  "description": "Preact component library",
+  "author": {
+    "name": "lj",
+    "email": "coderup@163.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "Component",
+    "UI",
+    "Preact"
+  ],
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "clean": "rimraf dist",
+    "build-ts": "tsc -p tsconfig.build.json",
+    "build-css": "npx node-sass ./src/styles/index.scss ./dist/index.css",
+    "build": "yarn clean && yarn build-ts && yarn build-css",
     "serve": "vite preview",
-    "test": "jest --clearCache && jest",
+    "test": "jest --clearCache && jest --watch",
     "lint": "eslint ./src --ext .ts,.tsx,.js,.jsx",
     "format": "prettier --write ./src",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.1.2",
-    "@fortawesome/free-regular-svg-icons": "^6.1.2",
-    "@fortawesome/free-solid-svg-icons": "^6.1.2",
-    "classnames": "^2.3.1",
+  "peerDependencies": {
     "preact": "^10.5.13"
+  },
+  "dependencies": {
+    "classnames": "^2.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
@@ -41,7 +65,10 @@
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.3.0",
     "jest": "^27.1.0",
+    "node-sass": "^7.0.1",
+    "preact": "^10.5.13",
     "prettier": "^2.6.0",
+    "rimraf": "^3.0.2",
     "sass": "^1.54.4",
     "ts-jest": "^27.0.5",
     "typescript": "^4.3.2",

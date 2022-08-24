@@ -3,14 +3,15 @@ import { useCallback } from 'preact/hooks'
 import FieldContext from './context'
 import useStore, { FinishCallback, FinishErrCallback, StoreObj } from './store'
 import classnames from 'classnames'
-import './form.scss'
+import { FieldProps } from './Field'
 
-interface FormProps {
+export interface FormProps {
   initValue: StoreObj
   onFinish: FinishCallback
   onFinishFail: FinishErrCallback
   children: ComponentChildren
   layout?: 'inline' | 'vertical'
+  Item?: FC<FieldProps>
 }
 
 const Form = (props: FormProps) => {

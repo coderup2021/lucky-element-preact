@@ -31,7 +31,7 @@ export interface StoreInterface {
   notifyStoreChange?: () => void
   notifyErrChange?: (errInfo: ErrorInfo) => void
   validateFields: (value: StoreObj) => Promise<StoreObj>
-  validateField: (name: string, value: string) => Promise<StoreObj>
+  validateField: (name: string, value: any) => Promise<StoreObj>
   submit(): void
   registerField(field: FieldEntity): void
   getInstance: () => {

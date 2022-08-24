@@ -19,7 +19,7 @@ export type SizeProp =
   | '10x'
   | string
 
-export type WWIconProp = 'search' | 'check' | 'check-circle' | 'coffee'
+export type WWIconProp = 'coffee'
 export interface WWIconProps {
   icon: WWIconProp
   className?: string
@@ -49,7 +49,7 @@ const Icon: FC<WWIconProps> = (props) => {
   const [iSize, setISize] = useState(smSize)
   useEffect(() => {
     if (size.endsWith('px')) {
-      setISize(Number(size.replaceAll(/px/gi, '')))
+      setISize(Number(size.replace(/px/gi, '')))
     } else if (size === 'sm') {
       setISize(smSize)
     } else if (size === 'lg') {

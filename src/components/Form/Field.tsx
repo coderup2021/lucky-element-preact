@@ -3,7 +3,6 @@ import {
   FunctionComponent as FC,
   ComponentChildren,
   cloneElement,
-  ComponentChild,
   VNode,
 } from 'preact'
 import {
@@ -13,11 +12,11 @@ import {
   useMemo,
   useCallback,
 } from 'preact/hooks'
-import { Rule, Rules, ErrorInfo } from './async-validator'
+import { Rules } from './async-validator'
 import FieldContext from './context'
 import { StoreInterface } from './store'
 
-interface FieldProps {
+export interface FieldProps {
   label?: string
   name: string
   children: ComponentChildren
@@ -49,7 +48,7 @@ const Field: FC<FieldProps> = (props) => {
 
   useEffect(() => {
     context
-      ?.validateField(name, fieldValue || '')
+      ?.validateField(name, fieldValue)
       .then(() => {
         setErrMsg(null)
       })
@@ -87,36 +86,4 @@ const Field: FC<FieldProps> = (props) => {
     </div>
   )
 }
-
-/**
- *
- * class 版本 不完整
- *
- */
-// class Field extends React.Component {
-//   static contextType = FieldContext;
-//   getControlled = (oldProps) => {
-//     const { name, onChange: propOnChange } = this.props;
-//     return {
-//       ...oldProps,
-//       value: this.context.getFieldValue(name),
-//       onChange: (e) => {
-//         this.context.setFieldValue(name, e.target.value);
-//         typeof propOnChange === "function" && propOnChange(e.target.value);
-//       },
-//     };
-//   };
-//   onStoreChange = () => {
-//     this.forceUpdate();
-//   };
-//   componentDidMount() {
-//     this.context.registerField(this);
-//   }
-//
-//   render() {
-//     const { children, name, rules } = this.props;
-//     return <>{React.cloneElement(children, this.getControlled(children.props))}</>;
-//   }
-// }
-//
 export default Field

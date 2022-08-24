@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "esnext",
+    "target": "es5",
+    "declaration": true,
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src"],
+  "exclude": [
+    "src/**/__test__/*",
+    "src/**/*.test.tsx",
+    "src/**/*.stories.tsx",
+    "./oldFolder/**/*",
+    "stories",
+    "./setupTests.ts"
+  ]
+}

@@ -1,3 +1,0 @@
-# Components Folder
-
-Shared components go here. Think button, input, dialog, logo, etc...
