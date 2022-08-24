@@ -42,11 +42,6 @@ class AsyncValidator {
     }
   }
   checkNoMessage(k: string, rule: Rule) {
-    console.log('rule', rule)
-    console.log(
-      "rule.hasOwnProperty('required')",
-      rule.hasOwnProperty('regexp'),
-    )
     let ruleName = ''
     if (rule.hasOwnProperty('required')) {
       ruleName = 'required'
@@ -74,11 +69,24 @@ class AsyncValidator {
     }
     return true
   }
+  requiredIsFalse(rules: Rules) {
+    let required
+    for (const rule of rules) {
+      if (rule.hasOwnProperty('required')) {
+        required = rule.required
+      }
+    }
+    return required === false
+  }
+  isEmptyVoidNull(value: string | null | undefined) {
+    return value === void 0 || value === undefined || value === ''
+  }
   validate(values: StoreObj, cb?: validateCallback) {
     const keys = Object.keys(values)
     for (const k of keys) {
       const rules = this.descriptors[k]
       if (rules && rules.length > 0) {
+        let requiredIsFalse = this.requiredIsFalse(rules)
         for (let rule of rules) {
           if (rule.hasOwnProperty('required') && rule.required === true) {
             if (['', void 0, null].some((x) => x === values[k])) {
@@ -92,6 +100,10 @@ class AsyncValidator {
             }
           } else if (rule.hasOwnProperty('validator')) {
             if (this.checkValidateFunction(k, rule)) {
+              if (requiredIsFalse && this.isEmptyVoidNull(values[k])) {
+                //don't check when (not required && isEmtpyVoidNull)
+                break
+              }
               if (rule.validator && rule.validator(values[k]) === false) {
                 this.checkNoMessage(k, rule)
                 this.errInfo.errorFields.push({
@@ -104,6 +116,10 @@ class AsyncValidator {
             }
           } else if (rule.hasOwnProperty('regexp')) {
             if (this.checkRegexp(k, rule)) {
+              if (requiredIsFalse && this.isEmptyVoidNull(values[k])) {
+                //don't check when (not required && isEmtpyVoidNull)
+                break
+              }
               if (!rule.regexp?.test(values[k])) {
                 this.checkNoMessage(k, rule)
                 this.errInfo.errorFields.push({
