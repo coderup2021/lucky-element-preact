@@ -1,5 +1,5 @@
 @each $key, $theme in $theme-colors {
   .icon-#{$key} {
-    color: $theme;
+    fill: $theme;
   }
 }

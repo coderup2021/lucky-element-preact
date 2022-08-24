@@ -1,16 +1,36 @@
 import { h, FunctionComponent as FC } from 'preact'
 import classnames from 'classnames'
-import {
-  IconProp,
-  FontAwesomeIcon,
-  FontAwesomeIconProps,
-} from 'preact-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-library.add(fas, far)
+import Coffee from './components/Coffee'
+import { useEffect, useState } from 'preact/hooks'
 
-export type { IconProp }
+export type SizeProp =
+  | 'xs'
+  | 'lg'
+  | 'sm'
+  | '1x'
+  | '2x'
+  | '3x'
+  | '4x'
+  | '5x'
+  | '6x'
+  | '7x'
+  | '8x'
+  | '9x'
+  | '10x'
+  | string
+
+export type WWIconProp = 'search' | 'check' | 'check-circle' | 'coffee'
+export interface WWIconProps {
+  icon: WWIconProp
+  className?: string
+  theme?: ThemeProps
+  size?: SizeProp
+}
+
+export interface InnerWWIconProps extends Omit<WWIconProps, 'size'> {
+  size?: number
+}
+
 export type ThemeProps =
   | 'primary'
   | 'secondary'
@@ -21,20 +41,42 @@ export type ThemeProps =
   | 'light'
   | 'dark'
 
-export interface IconProps extends FontAwesomeIconProps {
-  theme?: ThemeProps
-  icon: IconProp
-}
-
-const Icon: FC<IconProps> = (props) => {
-  const { className, theme, ...restProps } = props
+const smSize = 16
+const lgSize = 18
+const xsSize = 20
+const Icon: FC<WWIconProps> = (props) => {
+  const { icon, className, size = 'sm', theme } = props
+  const [iSize, setISize] = useState(smSize)
+  useEffect(() => {
+    if (size.endsWith('px')) {
+      setISize(Number(size.replaceAll(/px/gi, '')))
+    } else if (size === 'sm') {
+      setISize(smSize)
+    } else if (size === 'lg') {
+      setISize(lgSize)
+    } else if (size === 'xs') {
+      setISize(xsSize)
+    } else if (size.endsWith('x')) {
+      setISize(Number(size.replace('x', '')) * smSize)
+    } else {
+      setISize(smSize)
+    }
+  }, [size])
   const classes = classnames('lucky-icon', className, {
     [`icon-${theme}`]: theme,
   })
-  return <FontAwesomeIcon className={classes} {...restProps} />
+
+  switch (icon) {
+    case 'coffee':
+      return <Coffee icon={icon} size={iSize} className={classes} />
+    default:
+      return null
+  }
 }
 
 Icon.defaultProps = {
   theme: 'info',
+  size: 'sm',
 }
+
 export default Icon
