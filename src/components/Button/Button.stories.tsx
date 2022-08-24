@@ -1,4 +1,4 @@
-import { h, Story, Meta, StoryFn } from '@storybook/preact'
+import { Story, Meta } from '@storybook/preact'
 import '../../styles/index.scss'
 
 import Button from './Button'

@@ -40,11 +40,11 @@ const Field: FC<FieldProps> = (props) => {
       setErrMsg(errMsg)
     }
     context?.registerField({ name, onStoreChange, onErrChange, rules })
-  }, [name, context])
+  }, [name, context, rules])
 
   const fieldValue = useMemo(() => {
     return context?.getFieldValue(name)
-  }, [update, context, name])
+  }, [update, context, name]) //eslint-disable-line
 
   useEffect(() => {
     context

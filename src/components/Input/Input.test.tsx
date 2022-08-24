@@ -6,7 +6,6 @@ import Input from './'
 let wrapper: RenderResult
 
 describe('test Input Component', () => {
-  beforeEach(() => {})
   const defaultProps = {
     placeholder: 'test input',
     onChange: jest.fn(),

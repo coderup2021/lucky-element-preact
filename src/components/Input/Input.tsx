@@ -74,7 +74,7 @@ export const Input: FC<InputProps> = (props) => {
     restProps.value = fixedControlledValue(props.value)
   }
 
-  const classes = classnames('lucky-input-wrapper', {
+  const classes = classnames('lucky-input-wrapper', className, {
     'is-disable': disabled,
     [`input-size-${size}`]: size,
     'input-group': prepend || append,

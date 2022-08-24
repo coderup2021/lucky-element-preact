@@ -43,11 +43,11 @@ class AsyncValidator {
   }
   checkNoMessage(k: string, rule: Rule) {
     let ruleName = ''
-    if (rule.hasOwnProperty('required')) {
+    if (Object.prototype.hasOwnProperty.call(rule, 'required')) {
       ruleName = 'required'
-    } else if (rule.hasOwnProperty('validate')) {
+    } else if (Object.prototype.hasOwnProperty.call(rule, 'validate')) {
       ruleName = 'validate'
-    } else if (rule.hasOwnProperty('regexp')) {
+    } else if (Object.prototype.hasOwnProperty.call(rule, 'regexp')) {
       ruleName = 'regexp'
     }
 
@@ -72,7 +72,7 @@ class AsyncValidator {
   requiredIsFalse(rules: Rules) {
     let required
     for (const rule of rules) {
-      if (rule.hasOwnProperty('required')) {
+      if (Object.prototype.hasOwnProperty.call(rule, 'required')) {
         required = rule.required
       }
     }
@@ -86,9 +86,12 @@ class AsyncValidator {
     for (const k of keys) {
       const rules = this.descriptors[k]
       if (rules && rules.length > 0) {
-        let requiredIsFalse = this.requiredIsFalse(rules)
-        for (let rule of rules) {
-          if (rule.hasOwnProperty('required') && rule.required === true) {
+        const requiredIsFalse = this.requiredIsFalse(rules)
+        for (const rule of rules) {
+          if (
+            Object.prototype.hasOwnProperty.call(rule, 'required') &&
+            rule.required === true
+          ) {
             if (['', void 0, null].some((x) => x === values[k])) {
               this.checkNoMessage(k, rule)
               this.errInfo.errorFields.push({
@@ -98,7 +101,7 @@ class AsyncValidator {
               this.errInfo.values[k] = values[k]
               break
             }
-          } else if (rule.hasOwnProperty('validator')) {
+          } else if (Object.prototype.hasOwnProperty.call(rule, 'validator')) {
             if (this.checkValidateFunction(k, rule)) {
               if (requiredIsFalse && this.isEmptyVoidNull(values[k])) {
                 //don't check when (not required && isEmtpyVoidNull)
@@ -114,7 +117,7 @@ class AsyncValidator {
                 break
               }
             }
-          } else if (rule.hasOwnProperty('regexp')) {
+          } else if (Object.prototype.hasOwnProperty.call(rule, 'regexp')) {
             if (this.checkRegexp(k, rule)) {
               if (requiredIsFalse && this.isEmptyVoidNull(values[k])) {
                 //don't check when (not required && isEmtpyVoidNull)

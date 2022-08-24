@@ -35,7 +35,8 @@
     "lint": "eslint ./src --ext .ts,.tsx,.js,.jsx",
     "format": "prettier --write ./src",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepublish": "yarn lint && yarn test:nowatch && yarn build"
   },
   "peerDependencies": {
     "preact": "^10.5.13"

@@ -3,3 +3,6 @@ node_modules
 **/.cache/**
 **/dist/**
 **/public/**
+*.stories.tsx
+*.stories.jsx
+src/stories/**/*

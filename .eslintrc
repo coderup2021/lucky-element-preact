@@ -4,7 +4,7 @@
     "commonjs": true,
     "es6": true,
     "jest": true,
-    "node": true,
+    "node": true
   },
   "extends": [
     "eslint:recommended",
@@ -35,17 +35,13 @@
       "version": "detect"
     }
   },
-  "plugins": [
-    "import",
-    "@typescript-eslint",
-  ],
+  "plugins": ["import", "@typescript-eslint"],
   "overrides": [
     {
-      "files": [
-        "*.js"
-      ],
+      "files": ["*.js", "*.ts", "*.tsx", "*.jsx"],
       "rules": {
-        "@typescript-eslint/no-var-requires": "off"
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/no-explicit-any": ["off"]
       }
     }
   ]

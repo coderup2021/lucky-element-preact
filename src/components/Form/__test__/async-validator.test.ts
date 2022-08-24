@@ -1,6 +1,5 @@
-import AsyncValidator, { ErrorInfo } from '../async-validator'
+import AsyncValidator from '../async-validator'
 
-let validator = null
 describe('test async-validator.js', () => {
   it('should validte required false rule ok', async () => {
     const rules = [
@@ -110,7 +109,7 @@ describe('test async-validator.js', () => {
     const res = await instance.validate({ username: '' })
     expect(res).toEqual({ username: '' })
     try {
-      const res = await instance.validate({ username: '123' })
+      await instance.validate({ username: '123' })
     } catch (error: any) {
       expect(error.firstMessage).toBe(valiMsg)
     }
