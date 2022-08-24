@@ -31,6 +31,7 @@
     "build": "yarn clean && yarn build-ts && yarn build-css",
     "serve": "vite preview",
     "test": "jest --clearCache && jest --watch",
+    "test:nowatch": "jest --clearCache && jest",
     "lint": "eslint ./src --ext .ts,.tsx,.js,.jsx",
     "format": "prettier --write ./src",
     "storybook": "start-storybook -p 6006",
