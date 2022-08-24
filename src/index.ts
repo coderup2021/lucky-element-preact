@@ -17,3 +17,6 @@ export type { WWIconProps, ThemeProps, SizeProp } from './components/Icon'
 
 export { default as Input } from './components/Input'
 export type { InputProps } from './components/Input'
+
+export { default as Progress } from './components/Progress'
+export type { ProgressProps } from './components/Progress'

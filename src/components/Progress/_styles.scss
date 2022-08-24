@@ -1,0 +1,37 @@
+.lucky-progress-bar {
+  width: 100%;
+  box-sizing: border-box;
+
+  .progress-bar-outter {
+    border-radius: $progress-border-radius;
+    background-color: $progress-bg;
+    overflow: hidden;
+    position: relative;
+
+    .progress-bar-inner {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 100%;
+      border-radius: $progress-border-radius;
+      line-height: 1;
+      transition: $progress-bar-transition;
+
+      .inner-text {
+        color: $progress-bar-color;
+        font-size: $progress-font-size;
+        margin: 0, 5px;
+        padding-right: 4px;
+      }
+    }
+
+    @each $key, $value in $theme-colors {
+      .progress-bar-#{$key} {
+        background-color: $value;
+      }
+    }
+  }
+}
