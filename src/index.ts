@@ -20,3 +20,6 @@ export type { InputProps } from './components/Input'
 
 export { default as Progress } from './components/Progress'
 export type { ProgressProps } from './components/Progress'
+
+export { default as AutoComplete } from './components/AutoComplete'
+export type { AutoCompleteProps } from './components/AutoComplete'

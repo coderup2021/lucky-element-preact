@@ -6,7 +6,7 @@ const Coffee: FC<InnerWWIconProps> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1024 1024"
+      viewBox="0 0 512 512"
       style={{ width: size, height: size }}
       className={className}
     >

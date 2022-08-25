@@ -1,7 +1,8 @@
 import { h, FunctionComponent as FC } from 'preact'
 import classnames from 'classnames'
-import Coffee from './components/Coffee'
 import { useEffect, useState } from 'preact/hooks'
+import Coffee from './components/Coffee'
+import Spinner from './components/Spinner'
 
 export type SizeProp =
   | 'xs'
@@ -19,12 +20,13 @@ export type SizeProp =
   | '10x'
   | string
 
-export type WWIconProp = 'coffee'
+export type WWIconProp = 'coffee' | 'spinner'
 export interface WWIconProps {
   icon: WWIconProp
   className?: string
   theme?: ThemeProps
   size?: SizeProp
+  spin?: boolean
 }
 
 export interface InnerWWIconProps extends Omit<WWIconProps, 'size'> {
@@ -45,7 +47,7 @@ const smSize = 16
 const lgSize = 18
 const xsSize = 20
 const Icon: FC<WWIconProps> = (props) => {
-  const { icon, className, size = 'sm', theme } = props
+  const { icon, className, size = 'sm', theme, spin = false } = props
   const [iSize, setISize] = useState(smSize)
   useEffect(() => {
     if (size.endsWith('px')) {
@@ -64,11 +66,14 @@ const Icon: FC<WWIconProps> = (props) => {
   }, [size])
   const classes = classnames('lucky-icon', className, {
     [`icon-${theme}`]: theme,
+    'spin-icon-rotate': spin,
   })
 
   switch (icon) {
     case 'coffee':
       return <Coffee icon={icon} size={iSize} className={classes} />
+    case 'spinner':
+      return <Spinner icon={icon} size={iSize} className={classes} />
     default:
       return null
   }
@@ -77,6 +82,7 @@ const Icon: FC<WWIconProps> = (props) => {
 Icon.defaultProps = {
   theme: 'info',
   size: 'sm',
+  spin: false,
 }
 
 export default Icon

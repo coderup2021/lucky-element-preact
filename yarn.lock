@@ -10193,6 +10193,11 @@ postcss@^8.4.13:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
+preact-transition-group@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmmirror.com/preact-transition-group/-/preact-transition-group-2.0.0.tgz#3d6e1d8ad962c0cbe9252f235cb11da8799d7ef9"
+  integrity sha512-jqmRNDDlDdzRigAOw16jcK6rYVJF1aPBbhcJMw/YMc5PDm+LYnCoBV/rBEwyuEvsqGkq2SDO6w1cAZx++YowVA==
+
 preact@^10.5.13:
   version "10.10.6"
   resolved "https://registry.npmjs.org/preact/-/preact-10.10.6.tgz#1fe62aecf93974b64e6a42e09ba1f00f93207d14"

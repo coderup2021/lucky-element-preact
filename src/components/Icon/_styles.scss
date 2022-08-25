@@ -3,3 +3,16 @@
     fill: $theme;
   }
 }
+
+.spin-icon-rotate {
+  animation: spin-icon 1s linear 0s infinite;
+}
+
+@keyframes spin-icon {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

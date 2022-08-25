@@ -1,0 +1,41 @@
+.lucky-auto-complete {
+  position: relative;
+
+  .suggestion-loading-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75px;
+  }
+
+  .suggestion-list {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    white-space: nowrap;
+    background-color: white;
+    border: solid $menu-border-width $border-color;
+    border-radius: $border-radius;
+    box-shadow: $menu-box-shadow;
+    list-style: none;
+    padding-left: 0;
+
+    .suggestion-item {
+      padding: $menu-item-padding-y $menu-item-padding-x;
+      cursor: pointer;
+      transition: $menu-transition;
+      color: $body-color;
+
+      &.suggestion-item-highlighted {
+        background-color: $menu-item-active-color;
+        color: $white;
+      }
+
+      &:hover {
+        color: $menu-item-active-color;
+      }
+    }
+  }
+}
