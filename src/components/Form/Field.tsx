@@ -59,14 +59,20 @@ const Field: FC<FieldProps> = (props) => {
 
   const getControlled = useCallback(
     (oldProps: any) => {
+      const _onInput = (e: any) => {
+        context?.setFieldValue(name, e.target.value)
+        typeof propOnChange === 'function' && propOnChange(e.target.value)
+      }
+      const _onChange = (value: any) => {
+        context?.setFieldValue(name, value)
+        typeof propOnChange === 'function' && propOnChange(value)
+      }
       return {
         ...oldProps,
         error: errMsg,
         value: fieldValue,
-        onInput: (e: any) => {
-          context?.setFieldValue(name, e.target.value)
-          typeof propOnChange === 'function' && propOnChange(e.target.value)
-        },
+        onInput: _onInput,
+        onChange: _onChange,
       }
     },
     [errMsg, fieldValue, context, propOnChange, name],

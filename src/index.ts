@@ -23,3 +23,6 @@ export type { ProgressProps } from './components/Progress'
 
 export { default as AutoComplete } from './components/AutoComplete'
 export type { AutoCompleteProps } from './components/AutoComplete'
+
+export { default as Select } from './components/Select'
+export type { SelectProp, OptionProp } from './components/Select'

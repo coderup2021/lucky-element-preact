@@ -11,7 +11,7 @@ export interface DataSourceObject {
   value: string
 }
 
-export type DataSourceType<T = Record<string, unknown>> = DataSourceObject & T
+export type DataSourceType<T = {}> = DataSourceObject & T
 
 export interface AutoCompleteProps extends Omit<InputProps, 'onSelect'> {
   fetchSuggestions: (

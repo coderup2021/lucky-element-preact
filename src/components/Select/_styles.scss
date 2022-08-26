@@ -1,0 +1,60 @@
+.lucky-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  .display {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    height: $select-height;
+    line-height: $select-height;
+    color: $input-color;
+    border: solid $input-border-width $input-border-color;
+    border-radius: $input-border-radius;
+    padding-left: $input-padding-x;
+    box-shadow: $input-box-shadow;
+    text-align: left;
+
+    &:focus {
+      outline: 0;
+      -webkit-box-shadow: $input-focus-box-shadow;
+      box-shadow: $input-focus-box-shadow;
+      border-color: $input-focus-border-color;
+    }
+  }
+
+  .select-icon {
+    position: absolute;
+    top: calc(100% - #{$select-height/2} - 8px);
+    right: 0;
+  }
+
+  .dropdown-box {
+    width: 100%;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background-color: #fff;
+    z-index: 100;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: $menu-box-shadow;
+    border: solid $border-width $border-color;
+    border-radius: $border-radius;
+    .option {
+      width: 100%;
+      padding: $menu-item-padding-y $menu-item-padding-x;
+      text-align: left;
+      margin: 0;
+      transition: $menu-transition;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $menu-item-active-color;
+        color: $white;
+      }
+    }
+  }
+}

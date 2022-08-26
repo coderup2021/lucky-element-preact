@@ -3,6 +3,10 @@ import classnames from 'classnames'
 import { useEffect, useState } from 'preact/hooks'
 import Coffee from './components/Coffee'
 import Spinner from './components/Spinner'
+import CaretLeft from './components/CaretLeft'
+import CaretRight from './components/CaretRight'
+import CaretUp from './components/CaretUp'
+import CaretDown from './components/CaretDown'
 
 export type SizeProp =
   | 'xs'
@@ -20,7 +24,13 @@ export type SizeProp =
   | '10x'
   | string
 
-export type WWIconProp = 'coffee' | 'spinner'
+export type WWIconProp =
+  | 'coffee'
+  | 'spinner'
+  | 'caret-left'
+  | 'caret-right'
+  | 'caret-down'
+  | 'caret-up'
 export interface WWIconProps {
   icon: WWIconProp
   className?: string
@@ -74,6 +84,14 @@ const Icon: FC<WWIconProps> = (props) => {
       return <Coffee icon={icon} size={iSize} className={classes} />
     case 'spinner':
       return <Spinner icon={icon} size={iSize} className={classes} />
+    case 'caret-left':
+      return <CaretLeft icon={icon} size={iSize} className={classes} />
+    case 'caret-right':
+      return <CaretRight icon={icon} size={iSize} className={classes} />
+    case 'caret-up':
+      return <CaretUp icon={icon} size={iSize} className={classes} />
+    case 'caret-down':
+      return <CaretDown icon={icon} size={iSize} className={classes} />
     default:
       return null
   }
