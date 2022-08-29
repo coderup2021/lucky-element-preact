@@ -34,12 +34,15 @@ const Field: FC<FieldProps> = (props) => {
   useEffect(() => {
     const onStoreChange = () => {
       forceUpdate(Object.create(null))
+      context?.reRender(Object.create(null))
     }
     const onErrChange = (errMsg: string) => {
-      console.log('onErrChange:', errMsg)
       setErrMsg(errMsg)
     }
     context?.registerField({ name, onStoreChange, onErrChange, rules })
+    return () => {
+      context?.removeFiled(name)
+    }
   }, [name, context, rules])
 
   const fieldValue = useMemo(() => {

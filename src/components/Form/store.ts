@@ -4,7 +4,7 @@ import Schema, { Rule, RuleMap, ErrorInfo } from './async-validator'
 export interface StoreObj {
   [key: string]: any
 }
-type Rerender = () => void
+type Rerender = (value: any) => void
 export type FinishCallback = (value: StoreObj) => void
 export type FinishErrCallback = (errorInfo: ErrorInfo) => void
 interface Callbacks {
@@ -34,6 +34,7 @@ export interface StoreInterface {
   validateField: (name: string, value: any) => Promise<StoreObj>
   submit(): void
   registerField(field: FieldEntity): void
+  removeFiled(name: string): void
   getInstance: () => {
     getFieldValue(name: string): void
     getFieldsValue: () => StoreObj
@@ -47,7 +48,7 @@ export interface StoreInterface {
     store: StoreObj
   }
 }
-class Store implements StoreInterface {
+export default class Store implements StoreInterface {
   store: StoreObj
   reRender: StateUpdater<any>
   callbacks: Callbacks
@@ -59,7 +60,10 @@ class Store implements StoreInterface {
     this.callbacks = {}
     this.fieldEntities = []
   }
-
+  removeFiled = (name: string) => {
+    console.log('remove ', name)
+    this.fieldEntities = this.fieldEntities.filter((item) => item.name !== name)
+  }
   getFieldValue = (name: string) => {
     return this.store[name]
   }
@@ -173,8 +177,15 @@ class Store implements StoreInterface {
       })
   }
 
+  hasExist = (field: FieldEntity) => {
+    return (
+      this.fieldEntities.find((item) => item.name === field.name) !== undefined
+    )
+  }
   registerField = (field: FieldEntity) => {
-    this.fieldEntities.push(field)
+    if (!this.hasExist(field)) {
+      this.fieldEntities.push(field)
+    }
   }
   getInstance = () => {
     return {
@@ -192,13 +203,11 @@ class Store implements StoreInterface {
   }
 }
 
-const useStore = (initValue: StoreObj) => {
+export const useStore = (initValue?: StoreObj) => {
   const storeRef = useRef<StoreInterface>()
   const [, forceUpdate] = useState(Object.create(null))
   if (!storeRef.current)
-    storeRef.current = new Store(initValue, forceUpdate as any)
+    storeRef.current = new Store(initValue as StoreObj, forceUpdate as any)
   const store = storeRef.current
   return [store]
 }
-
-export default useStore
