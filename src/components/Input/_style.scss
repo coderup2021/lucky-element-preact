@@ -3,6 +3,7 @@
   width: 100%;
   margin-bottom: 30px;
   position: relative;
+
   .icon-wrapper {
     position: absolute;
     height: 100%;
@@ -16,17 +17,6 @@
     svg {
       color: $input-placeholder-color;
     }
-  }
-  .lucky-input-group-error-info {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    height: 60%;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    color: $danger;
-    align-items: center;
   }
 }
 .icon-wrapper + .lucky-input-inner {

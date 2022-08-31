@@ -101,7 +101,7 @@ export const Input: FC<InputProps> = (props) => {
       />
       {append && <div className="lucky-input-group-append">{append}</div>}
       {tail && <div className="lucky-input-group-tail">{tail}</div>}
-      {error && <div className="lucky-input-group-error-info">{error}</div>}
+      {error && <div className="lucky-form-error-info">{error}</div>}
     </div>
   )
 }
