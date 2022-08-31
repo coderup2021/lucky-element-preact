@@ -6,3 +6,5 @@ node_modules
 *.stories.tsx
 *.stories.jsx
 src/stories/**/*
+app.tsx
+main.tsx

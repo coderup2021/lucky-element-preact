@@ -1,5 +1,5 @@
 import { h, FunctionComponent as FC, ComponentChildren } from 'preact'
-import { useCallback, useEffect } from 'preact/hooks'
+import { useCallback } from 'preact/hooks'
 import FieldContext from './context'
 import { useStore, FinishCallback, FinishErrCallback, StoreObj } from './store'
 import classnames from 'classnames'

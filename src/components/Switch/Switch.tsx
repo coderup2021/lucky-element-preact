@@ -35,7 +35,7 @@ const Switch: FC<SwitchProp> = (props) => {
       }
       typeof onChange === 'function' && onChange(value)
     },
-    [valueMap],
+    [valueMap, onChange],
   )
   const checkedValue = useMemo(() => {
     if (valueMap) {

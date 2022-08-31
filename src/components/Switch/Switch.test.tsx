@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, cleanup } from '@testing-library/preact'
+import { fireEvent, render, screen } from '@testing-library/preact'
 import Switch, { SwitchProp } from '.'
 import '@testing-library/jest-dom'
 

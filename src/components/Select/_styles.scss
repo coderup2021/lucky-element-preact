@@ -1,6 +1,7 @@
 .lucky-select {
   position: relative;
   display: inline-block;
+  margin-bottom: $form-item-margin-bottom;
   width: 100%;
 
   .display {
@@ -50,6 +51,7 @@
       margin: 0;
       transition: $menu-transition;
       cursor: pointer;
+      min-height: $select-height;
 
       &:hover {
         background-color: $menu-item-active-color;

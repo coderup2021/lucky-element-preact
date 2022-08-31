@@ -20,6 +20,7 @@ export interface SelectProp
   value?: SelectValue
   options: OptionProp[]
   className?: string
+  error?: string
 }
 
 const getDisplayTextByValue = (value: SelectValue, options: OptionProp[]) => {
@@ -33,8 +34,10 @@ const Select: FC<SelectProp> = (props) => {
     value: defaultValue,
     options,
     className,
+    error,
     ...restProps
   } = props
+  console.log('error', error)
   const [optionVisible, setOptionVisible] = useState(false)
   const [displayText, setDisplayText] = useState('')
   const componentRef = useRef<HTMLDivElement>(null)
@@ -68,10 +71,10 @@ const Select: FC<SelectProp> = (props) => {
   return (
     <div
       className={klasses}
-      {...restProps}
       data-testid="select-test"
       style={{ width: width ? width : '100%' }}
       ref={componentRef}
+      {...restProps}
     >
       <div onClick={toggleShow} className={'display'}>
         <Icon
@@ -82,6 +85,7 @@ const Select: FC<SelectProp> = (props) => {
         />
         {displayText}
       </div>
+      {error && <div className="lucky-form-error-info">{error}</div>}
 
       {optionVisible && (
         <div className="dropdown-box">
