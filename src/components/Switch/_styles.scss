@@ -1,0 +1,40 @@
+.lucky-switch-wrapper {
+  display: flex;
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+
+  .switch {
+    position: relative;
+    -webkit-appearance: none;
+    width: 44px;
+    height: 22px;
+    line-height: 22px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    outline: none;
+    vertical-align: middle;
+  }
+
+  .switch:before {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0px 0px 5px #ddd;
+    transition: all 0.2s linear;
+  }
+
+  .switch:checked {
+    background: #1890ff;
+  }
+
+  .switch:checked:before {
+    left: 24px;
+    transition: all 0.2s linear;
+  }
+}

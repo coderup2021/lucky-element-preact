@@ -1,23 +1,34 @@
-.mnt-form{
-	display: flex;
+.mnt-form {
+  display: flex;
 
-	.mnt-form-item{
-		.mnt-form-item-label{
-		}
-		.mnt-form-item-content{
-			
-		}
-	}
+  .mnt-form-item {
+    .mnt-form-item-label {
+    }
+    .mnt-form-item-content {
+    }
+  }
 }
 
-.mnt-form-horizontal{
-	flex-direction:column;
+.mnt-form-horizontal {
+  flex-direction: column;
 }
 
-.mnt-form-inline{
-	flex-direction:row;
+.mnt-form-inline {
+  flex-direction: row;
 }
 
-.mnt-form-vertical{
-	flex-direction:column;
+.mnt-form-vertical {
+  flex-direction: column;
+}
+
+.lucky-form-error-info {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  height: 60%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  color: $danger;
+  align-items: center;
 }
