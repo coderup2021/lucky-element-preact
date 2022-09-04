@@ -1,14 +1,17 @@
+.lucky-icon {
+}
+
 @each $key, $theme in $theme-colors {
-  .icon-#{$key} {
+  .lucky-icon-#{$key} {
     fill: $theme;
   }
 }
 
-.spin-icon-rotate {
-  animation: spin-icon 1s linear 0s infinite;
+.lucky-spin-icon-rotate {
+  animation: lucky-spin-icon 1s linear 0s infinite;
 }
 
-@keyframes spin-icon {
+@keyframes lucky-spin-icon {
   from {
     transform: rotate(0deg);
   }

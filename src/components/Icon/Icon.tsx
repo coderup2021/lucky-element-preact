@@ -1,4 +1,4 @@
-import { h, FunctionComponent as FC } from 'preact'
+import { h, FunctionComponent as FC, JSX } from 'preact'
 import classnames from 'classnames'
 import { useEffect, useState } from 'preact/hooks'
 import Coffee from './components/Coffee'
@@ -41,6 +41,7 @@ export interface WWIconProps {
 
 export interface InnerWWIconProps extends Omit<WWIconProps, 'size'> {
   size?: number
+  style?: JSX.CSSProperties
 }
 
 export type ThemeProps =
@@ -54,8 +55,8 @@ export type ThemeProps =
   | 'dark'
 
 const smSize = 16
-const lgSize = 18
-const xsSize = 20
+const lgSize = 24
+const xsSize = 32
 const Icon: FC<WWIconProps> = (props) => {
   const { icon, className, size = 'sm', theme, spin = false } = props
   const [iSize, setISize] = useState(smSize)
@@ -70,13 +71,15 @@ const Icon: FC<WWIconProps> = (props) => {
       setISize(xsSize)
     } else if (size.endsWith('x')) {
       setISize(Number(size.replace('x', '')) * smSize)
+    } else if (size.match(/\d+/)) {
+      setISize(Number(size))
     } else {
       setISize(smSize)
     }
   }, [size])
   const classes = classnames('lucky-icon', className, {
-    [`icon-${theme}`]: theme,
-    'spin-icon-rotate': spin,
+    [`lucky-icon-${theme}`]: theme,
+    'lucky-spin-icon-rotate': spin,
   })
 
   switch (icon) {
