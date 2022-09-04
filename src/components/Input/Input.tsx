@@ -1,6 +1,5 @@
 import { h, FunctionComponent as FC, VNode, JSX, ComponentChild } from 'preact'
 import classnames from 'classnames'
-import { ErrorInfo } from '../Form/async-validator'
 // import Icon, { IconProp } from '../Icon'
 
 type InputSize = 'lg' | 'sm'
@@ -38,7 +37,7 @@ export interface InputProps
   /**
    * Input组件校验的错误信息
    */
-  error?: ErrorInfo
+  error?: string
 }
 
 /**
