@@ -157,4 +157,13 @@ const Pagination: FC<PaginationProps> = ({
     </section>
   )
 }
+Pagination.defaultProps = {
+  text: {
+    nextPage: '下一页',
+    prevPage: '上一页',
+    total: '共',
+    page: '页',
+    item: '条',
+  },
+}
 export default Pagination

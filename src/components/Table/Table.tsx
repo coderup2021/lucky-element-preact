@@ -228,5 +228,15 @@ const Empty: FC<EmptyProps> = ({ text = '暂无数据' }) => {
     </div>
   )
 }
+Empty.defaultProps = {
+  text: '暂无数据',
+}
+Table.defaultProps = {
+  loading: false,
+  pagination: {
+    visible: false,
+    total: 0,
+  },
+}
 
 export default Table
