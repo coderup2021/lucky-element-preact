@@ -7,13 +7,9 @@ import Select, { SelectProp } from './'
 export default {
   title: 'Example/Select',
   component: Select,
-  decorators: [
-    (Story) => (
-      <div style={{ height: 300 }}>
-        <Story />
-      </div>
-    ),
-  ],
+  parameters: {
+    docs: { iframeHeight: 300 },
+  },
 } as Meta<typeof Select>
 
 export const Template: Story<typeof Select> = () => {
