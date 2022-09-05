@@ -294,3 +294,8 @@ $progress-bar-transition: width 0.6s ease !default;
 $select-height: 2rem;
 $select-option-min-height: 2rem;
 $form-item-margin-bottom: 2rem;
+
+//Table
+$table-header-background: $light;
+$table-header-border-bottom: darken($light, 3);
+$table-td-padding: 1rem;

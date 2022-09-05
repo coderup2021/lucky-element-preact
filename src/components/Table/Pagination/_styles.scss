@@ -1,0 +1,90 @@
+.lucky-pagination-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  .total-and-page {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.8rem;
+
+    .primary {
+      color: $primary;
+    }
+    .current {
+      margin-left: 0.5rem;
+    }
+  }
+
+  .page-change-select {
+    min-width: 100px;
+    padding: 0 0.5rem;
+    height: 2rem;
+    border-radius: 0.2rem;
+    border: solid 1px $table-header-border-bottom;
+    display: inline-block;
+    vertical-align: middle;
+    background: $white;
+    font-size: 14px;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+      border: solid 1px $primary;
+      outline: 0;
+    }
+  }
+
+  .lucky-pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    list-style: none;
+    -webkit-font-feature-settings: 'tnum';
+    font-feature-settings: 'tnum';
+    vertical-align: middle;
+
+    .lucky-pagination-disabled,
+    .lucky-pagination-disabled:hover,
+    .lucky-pagination-disabled:focus {
+      cursor: not-allowed;
+    }
+
+    .lucky-pagination-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 2rem;
+      height: 2rem;
+      margin-right: 0.5rem;
+      list-style: none;
+      background-color: #fff;
+      border: 1px solid $table-header-border-bottom;
+      border-radius: 4px;
+      outline: 0;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .lucky-pagination-item-active {
+      font-weight: $font-weight-bold;
+      background: $white;
+      border-color: $primary;
+      color: $primary;
+
+      span {
+        border-color: $primary;
+        color: $primary;
+      }
+    }
+  }
+}
