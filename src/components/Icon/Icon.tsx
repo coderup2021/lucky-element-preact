@@ -7,6 +7,7 @@ import CaretLeft from './components/CaretLeft'
 import CaretRight from './components/CaretRight'
 import CaretUp from './components/CaretUp'
 import CaretDown from './components/CaretDown'
+import Close from './components/Close'
 
 export type SizeProp =
   | 'xs'
@@ -31,6 +32,8 @@ export type WWIconProp =
   | 'caret-right'
   | 'caret-down'
   | 'caret-up'
+  | 'close'
+
 export interface WWIconProps {
   icon: WWIconProp
   className?: string
@@ -95,6 +98,8 @@ const Icon: FC<WWIconProps> = (props) => {
       return <CaretUp icon={icon} size={iSize} className={classes} />
     case 'caret-down':
       return <CaretDown icon={icon} size={iSize} className={classes} />
+    case 'close':
+      return <Close icon={icon} size={iSize} className={classes} />
     default:
       return null
   }

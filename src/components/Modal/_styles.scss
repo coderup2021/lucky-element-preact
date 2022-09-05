@@ -1,0 +1,62 @@
+.lucky-modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: $modal-background-color;
+  z-index: 1000;
+  transition: all 200ms ease;
+
+  .lucky-modal {
+    width: 800px;
+    background-color: #fff;
+    z-index: 10100;
+    margin: 100px auto 0;
+    overflow: auto;
+    transition: all 200ms ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: $box-shadow-lg;
+
+    .lucky-modal-header {
+      padding: 1rem;
+      color: rgba(0, 0, 0, 0.65);
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+      border-radius: 4px 4px 0 0;
+      position: relative;
+      text-align: left;
+
+      .header-title {
+        font-weight: $font-weight-bold;
+        word-wrap: break-word;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0.8rem;
+        cursor: pointer;
+      }
+    }
+
+    .lucky-modal-body {
+      width: 100%;
+      padding: 1rem;
+      box-sizing: border-box;
+      min-height: 100px;
+      text-align: left;
+    }
+
+    .lucky-modal-footer {
+      width: 100%;
+      padding: 1rem;
+      text-align: right;
+      border-top: 1px solid $modal-line-color;
+      box-sizing: border-box;
+    }
+  }
+}
