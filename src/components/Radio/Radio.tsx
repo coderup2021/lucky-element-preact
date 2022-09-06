@@ -4,10 +4,6 @@ import classnames from 'classnames'
 
 type RadioSize = 'lg' | 'mid' | 'sm'
 
-type State = {
-  checked?: boolean
-}
-
 export interface RadioProps
   extends Omit<h.JSX.HTMLAttributes, 'size' | 'onChange'> {
   /**
@@ -51,17 +47,17 @@ export const InternalRadio: FC<RadioProps> = (props) => {
     size,
     value,
     children,
-    onChange
+    onChange,
   } = props
 
   const [state, setState] = useState({ checked: checked || false })
 
   // 监听props数据变化进行数据修改
   useEffect(() => {
-    if (state.checked != checked) {
-      setState({ checked: checked || false });
+    if (state.checked !== checked) {
+      setState({ checked: checked || false })
     }
-  }, [checked])
+  }, [checked, state.checked])
 
   const labelclasses = classnames('lucky-radio-wrapper', className, {
     'is-disable': disabled,
@@ -71,7 +67,7 @@ export const InternalRadio: FC<RadioProps> = (props) => {
 
   const spanclass = classnames('lucky-radio__span', className, {
     'is-disable': disabled,
-    'is-checked': state.checked
+    'is-checked': state.checked,
   })
 
   const handleChange: JSX.GenericEventHandler<HTMLInputElement> = (ev) => {
@@ -92,10 +88,11 @@ export const InternalRadio: FC<RadioProps> = (props) => {
           disabled={disabled}
           onChange={handleChange}
         />
-        <span className='lucky-radio-inner'></span>
+        <span className="lucky-radio-inner"></span>
       </span>
       {children || value}
     </label>
   )
 }
+
 export default InternalRadio

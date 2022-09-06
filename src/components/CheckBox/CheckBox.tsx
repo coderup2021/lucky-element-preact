@@ -15,8 +15,8 @@ export interface CheckBoxProps
    */
   disabled?: boolean
   /**
-  * 是否全选
-  */
+   * 是否全选
+   */
   indeterminate?: boolean
   /**
    * CheckBox的尺寸大小
@@ -56,10 +56,10 @@ export const InternalCheckbox: FC<CheckBoxProps> = (props) => {
 
   // 监听props数据变化进行数据修改
   useEffect(() => {
-    if (state.checked != checked) {
-      setState({ checked: checked || false });
+    if (state.checked !== checked) {
+      setState({ checked: checked || false })
     }
-  }, [checked])
+  }, [checked, state.checked])
 
   if ('value' in props) {
     restProps.value = props.value ? props.value : ''
@@ -87,7 +87,7 @@ export const InternalCheckbox: FC<CheckBoxProps> = (props) => {
       <span className={spanclass}>
         <input
           className="checkbox__original"
-          type='checkbox'
+          type="checkbox"
           aria-hidden="false"
           aria-label
           disabled={disabled}
@@ -95,10 +95,11 @@ export const InternalCheckbox: FC<CheckBoxProps> = (props) => {
           onChange={handleChange}
           {...restProps}
         />
-        <span className='lucky-checkbox-inner'></span>
+        <span className="lucky-checkbox-inner"></span>
       </span>
       {children || label}
     </label>
   )
 }
+
 export default InternalCheckbox
