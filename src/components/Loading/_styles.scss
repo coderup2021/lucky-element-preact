@@ -1,0 +1,24 @@
+.lucky-loading-spinner {
+  top: 50%;
+  margin-top: -21px;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  .lucky-loading-text {
+    color: #20a0ff;
+    margin: 3px 0;
+    font-size: 14px;
+  }
+  .circular {
+    animation: loading-rotate 1.5s linear infinite;
+  }
+  @keyframes loading-rotate {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
