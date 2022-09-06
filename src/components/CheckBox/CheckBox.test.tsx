@@ -6,9 +6,10 @@ const props: CheckBoxProps = {
   disabled: false,
   checked: true,
   indeterminate: false,
-  size:  "lg",
-  onChange: jest.fn()
+  size: 'lg',
+  onChange: jest.fn(),
 }
+
 describe('test CheckBox Component', () => {
   it('should render Progress correct based on default props', () => {
     const wrapper = render(<CheckBox {...props} />)

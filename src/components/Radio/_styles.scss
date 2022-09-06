@@ -14,7 +14,6 @@
     line-height: 1;
     vertical-align: middle;
 
-
     .lucky-radio-inner {
       position: relative;
       display: inline-block;
@@ -29,13 +28,13 @@
         height: 5px;
         border-radius: 50%;
         background-color: #fff;
-        content: "";
+        content: '';
         position: absolute;
         left: 50%;
         top: 50%;
-        -ms-transform: translate(-50%,-50%) scale(0);
-        transform: translate(-50%,-50%) scale(0);
-        transition: transform .15s cubic-bezier(.71,-.46,.88,.6);
+        -ms-transform: translate(-50%, -50%) scale(0);
+        transform: translate(-50%, -50%) scale(0);
+        transition: transform 0.15s cubic-bezier(0.71, -0.46, 0.88, 0.6);
       }
     }
 
@@ -57,7 +56,7 @@
       border-color: #20a0ff;
       background: #20a0ff;
       &:after {
-        transform: translate(-50%,-50%) scale(1);
+        transform: translate(-50%, -50%) scale(1);
       }
     }
   }
@@ -78,11 +77,11 @@
 }
 
 .lucky-radio-wrapper.radio-size-lg {
-  .lucky-radio__span  {
-    .lucky-radio-inner{
+  .lucky-radio__span {
+    .lucky-radio-inner {
       width: 18px;
       height: 18px;
-      &:after{
+      &:after {
         width: 6px;
         height: 6px;
       }
@@ -91,17 +90,17 @@
 }
 
 .lucky-radio-wrapper.radio-size-sm {
-  .lucky-radio__span  {
-    .lucky-radio-inner{
+  .lucky-radio__span {
+    .lucky-radio-inner {
       width: 14px;
       height: 14px;
-      &:after{
+      &:after {
         width: 4px;
         height: 4px;
       }
     }
   }
 }
-.lucky-radioGroup{
+.lucky-radioGroup {
   display: inline-block;
 }

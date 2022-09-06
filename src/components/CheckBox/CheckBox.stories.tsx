@@ -1,7 +1,6 @@
 import { useState } from 'preact/hooks'
 import { Story, Meta } from '@storybook/preact'
 import '../../styles/index.scss'
-
 import CheckBox from './index'
 
 export default {
@@ -16,22 +15,27 @@ export const DefaultCheckBox: Story<typeof CheckBox> = (args) => {
   }
   return (
     <>
-      <CheckBox> <span>默认状态</span>  </CheckBox>
-      <CheckBox onChange={onValueChange} checked={checked} ><span>默认选中状态</span></CheckBox>
+      <CheckBox>
+        {' '}
+        <span>默认状态</span>{' '}
+      </CheckBox>
+      <CheckBox onChange={onValueChange} checked={checked}>
+        <span>默认选中状态</span>
+      </CheckBox>
     </>
   )
 }
 
-export const disableCheckBox = () => <CheckBox disabled={true} />;
+export const disableCheckBox = () => <CheckBox disabled={true} />
 
 export const sizeCheckBox = () => {
   return (
     <>
-      <CheckBox size='sm' />
-      <CheckBox size='lg' />
+      <CheckBox size="sm" />
+      <CheckBox size="lg" />
     </>
   )
-};
+}
 
 export const indeterminateCheckBox = () => {
   return (
@@ -39,11 +43,11 @@ export const indeterminateCheckBox = () => {
       <CheckBox indeterminate={true}></CheckBox>
     </>
   )
-};
+}
 
 export const CheckBoxGroupExample = () => {
   const [options, setOptions] = useState<Array<string | number>>([1, 2])
-  const CheckBoxGrouChange = (options :Array<string | number>) => {
+  const CheckBoxGrouChange = (options: Array<string | number>) => {
     setOptions(options)
   }
   return (
@@ -54,4 +58,4 @@ export const CheckBoxGroupExample = () => {
       </CheckBox.Group>
     </>
   )
-};
+}
