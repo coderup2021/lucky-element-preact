@@ -49,11 +49,13 @@ const Modal: FC<ModalProps> = ({
     return _style
   }, [style, width])
   return (
-    <Transition animation="zoom-in-left" in={visible} timeout={300}>
-      <div
-        className={classnames('lucky-modal-wrapper', className)}
-        style={{ display: visible ? 'block' : 'none' }}
-      >
+    <Transition
+      animation="zoom-in-left"
+      in={visible}
+      duration={'500ms'}
+      unmountOnExit={true}
+    >
+      <div className={classnames('lucky-modal-wrapper', className)}>
         <div className={'lucky-modal'} style={getModalStyle()}>
           <div className={'lucky-modal-header'}>
             <div className={'header-title'}>{title}</div>

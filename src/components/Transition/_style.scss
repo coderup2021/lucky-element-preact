@@ -1,0 +1,36 @@
+.lucky-transition {
+  --lucky-opacity: 0;
+  --lucky-duration: 200ms;
+}
+
+.lucky-transition-enter {
+  display: none;
+}
+
+.lucky-transition-enter-active {
+  opacity: var(--lucky-opacity);
+  transition: opacity var(--lucky-duration);
+}
+
+.lucky-transition-leave-active {
+}
+
+.lucky-transition-leave {
+  display: none;
+}
+
+.test {
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+}
+
+// .element-exit {
+//   opacity: 1;
+//   transition: opacity 2000ms;
+// }
+
+// .element-exit-active {
+//   opacity: 0;
+//   transition: opacity 2000ms;
+// }

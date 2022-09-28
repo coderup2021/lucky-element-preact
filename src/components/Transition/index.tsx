@@ -1,4 +1,4 @@
-import Transition from "./Transition";
+import Transition from './Transition'
 
-export type { TransitionProps } from "./Transition";
-export default Transition;
+export type { TransitionProps } from './Transition'
+export default Transition
