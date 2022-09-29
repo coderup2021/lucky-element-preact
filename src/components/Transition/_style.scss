@@ -1,6 +1,9 @@
 .lucky-transition {
   --lucky-opacity: 0;
   --lucky-duration: 200ms;
+  --lucky-direction: top;
+  --lucky-origin: center top;
+  --lucky-transform: scaleY(1);
 }
 
 .lucky-transition-enter {
@@ -9,10 +12,10 @@
 
 .lucky-transition-enter-active {
   opacity: var(--lucky-opacity);
-  transition: opacity var(--lucky-duration);
-}
-
-.lucky-transition-leave-active {
+  transform: var(--lucky-transform);
+  transition: opacity var(--lucky-duration) cubic-bezier(0.23, 1, 0.32, 1) 100ms,
+    transform var(--lucky-duration) cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+  transform-origin: var(--lucky-origin);
 }
 
 .lucky-transition-leave {
@@ -24,13 +27,3 @@
   height: 200px;
   background-color: blue;
 }
-
-// .element-exit {
-//   opacity: 1;
-//   transition: opacity 2000ms;
-// }
-
-// .element-exit-active {
-//   opacity: 0;
-//   transition: opacity 2000ms;
-// }

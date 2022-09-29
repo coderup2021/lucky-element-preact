@@ -120,9 +120,9 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
 
     return (
       <Transition
-        animation="zoom-in-left"
+        animation="zoom-in-top"
         in={showDropDown || loading}
-        timeout={300}
+        duration={'300ms'}
       >
         {suggestions.length === 0 && loading && (
           <div className="suggestion-list suggestion-loading-icon">

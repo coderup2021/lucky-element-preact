@@ -3,10 +3,18 @@ import classnames from 'classnames'
 import { useEffect, useRef, useState, useMemo } from 'preact/hooks'
 
 type AnimationName =
+  | 'zoom-in-opacity'
   | 'zoom-in-top'
   | 'zoom-in-bottom'
   | 'zoom-in-left'
   | 'zoom-in-right'
+  | 'zoom-in-center'
+
+type LuckyTransitionVar =
+  | '--lucky-opacity'
+  | '--lucky-duration'
+  | '--lucky-transform'
+  | '--lucky-origin'
 
 export type TransitionProps = {
   animation?: AnimationName
@@ -30,6 +38,7 @@ interface TimeRef {
 
 const Transition: FC<TransitionProps> = (props) => {
   const {
+    animation = 'zoom-in-opacity',
     children,
     unmountOnExit = true,
     in: start,
@@ -59,29 +68,63 @@ const Transition: FC<TransitionProps> = (props) => {
     return tmp
   }, [duration])
 
+  const setEleCssVar = (key: LuckyTransitionVar, value: string | null) => {
+    eleRef.current?.style.setProperty(key, value)
+  }
+
   //设置display none 和 opacity 0
   const step1 = () => {
-    console.log('step1', eleRef)
     setKlasses(classnames(`${_self} ${enter} ${enterActive} `))
     setUnmount(false)
   }
 
   //移除display none， 保留opacity 0, (此时页面刚渲染，eleRef.current刚被赋值，可以设置css变量)
   const step2 = () => {
-    eleRef.current?.style.setProperty('--lucky-opacity', '0')
-    eleRef.current?.style.setProperty('--lucky-duration', duration.toString())
+    setEleCssVar('--lucky-opacity', '0')
+    setEleCssVar('--lucky-duration', duration.toString())
+
+    if (animation === 'zoom-in-top') {
+      setEleCssVar('--lucky-transform', 'scaleY(0)')
+      setEleCssVar('--lucky-origin', 'center top')
+    } else if (animation === 'zoom-in-bottom') {
+      setEleCssVar('--lucky-transform', 'scaleY(0)')
+      setEleCssVar('--lucky-origin', 'center bottom')
+    } else if (animation === 'zoom-in-left') {
+      setEleCssVar('--lucky-transform', 'scale(0.45, 0.45)')
+      setEleCssVar('--lucky-origin', 'top left')
+    } else if (animation === 'zoom-in-right') {
+      setEleCssVar('--lucky-transform', 'scale(0.45, 0.45)')
+      setEleCssVar('--lucky-origin', 'top right')
+    } else if (animation === 'zoom-in-center') {
+      setEleCssVar('--lucky-transform', 'scale(0, 0)')
+      setEleCssVar('--lucky-origin', 'center center')
+    }
     setKlasses(`${_self} ${enterActive}`)
   }
 
   //设置opacity 1，此时页面表现为开启执行动画
   const step3 = () => {
     setKlasses(`${_self} ${enterActive}`)
-    eleRef.current?.style.setProperty('--lucky-opacity', '1')
+    setEleCssVar('--lucky-opacity', '1')
+    if (animation === 'zoom-in-top' || animation === 'zoom-in-bottom') {
+      setEleCssVar('--lucky-transform', 'scaleY(1)')
+    } else if (animation === 'zoom-in-right' || animation === 'zoom-in-left') {
+      setEleCssVar('--lucky-transform', 'scale(1, 1)')
+    } else if (animation === 'zoom-in-center') {
+      setEleCssVar('--lucky-transform', 'scale(1, 1)')
+    }
   }
   //设置opactiy 0, 此时页面表现为开始执行退出动画
   const step4 = () => {
     setKlasses(`${_self} ${enterActive}`)
-    eleRef.current?.style.setProperty('--lucky-opacity', '0')
+    setEleCssVar('--lucky-opacity', '0')
+    if (animation === 'zoom-in-top' || animation === 'zoom-in-bottom') {
+      setEleCssVar('--lucky-transform', 'scaleY(0)')
+    } else if (animation === 'zoom-in-right' || animation === 'zoom-in-left') {
+      setEleCssVar('--lucky-transform', 'scale(0.45, 0.45)')
+    } else if (animation === 'zoom-in-center') {
+      setEleCssVar('--lucky-transform', 'scale(0, 0)')
+    }
   }
   //设置display none, 此时页面卸载
   const step5 = () => {
@@ -108,7 +151,7 @@ const Transition: FC<TransitionProps> = (props) => {
       clearTimer(timerRef.current.timer2)
       timerRef.current.timer3 = setTimeout(step5, durationNum)
     }
-  }, [start, durationNum, duration, step1, step4])
+  }, [start, durationNum, duration])
 
   return (
     <>

@@ -50,9 +50,9 @@ const Modal: FC<ModalProps> = ({
   }, [style, width])
   return (
     <Transition
-      animation="zoom-in-left"
+      animation="zoom-in-center"
       in={visible}
-      duration={'500ms'}
+      duration={'300ms'}
       unmountOnExit={true}
     >
       <div className={classnames('lucky-modal-wrapper', className)}>
