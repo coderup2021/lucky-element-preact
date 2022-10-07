@@ -303,3 +303,10 @@ $table-td-padding: 1rem;
 //Modal
 $modal-line-color: darken($light, 3);
 $modal-background-color: rgba(0, 0, 0, 0);
+
+$columns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+  21, 22, 23, 24;
+
+$screen-sizes: 'xs', 'sm', 'md', 'lg', 'xl', 'xxl';
+
+$breaks: 576px, 768px, 992px, 1200px, 1600px;

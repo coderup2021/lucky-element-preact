@@ -9,7 +9,7 @@ import { useEffect, useState, useContext } from 'preact/hooks'
 import { MenuContext, MenuIndex } from './Menu'
 import classnames from 'classnames'
 import Icon from '../Icon/Icon'
-import Transition from '../Transition/Transition'
+import Transition from '../Transition'
 
 export interface SubMenuProps {
   index?: MenuIndex
