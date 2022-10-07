@@ -67,19 +67,21 @@ const SubMenu: FC<SubMenuProps> = (props) => {
       children = [children]
     }
     const childrenComponent = (children as []).map((child: VNode, i) => {
-      //   console.log('SubMenu child', child)
-      //   console.log('SubMenu child.type.displayName', child.type.displayName)
       const { displayName } = child.type as ComponentType
       if (displayName === 'MenuItem' || displayName === 'SubMenu') {
         return cloneElement(child, { index: `${index}-${i.toString()}` })
       } else {
-        //   console.warn(
-        //     "Warning: Menu Component has a child which is not MenuItem"
-        //   );
+        console.warn(
+          'Warning: Menu Component has a child which is not MenuItem',
+        )
         return null
       }
     })
-    return menuOpen ? <ul className={classes}>{childrenComponent}</ul> : null
+    return (
+      <Transition in={menuOpen} duration={'300ms'} animation="zoom-in-top">
+        <ul className={classes}>{childrenComponent}</ul>
+      </Transition>
+    )
 
     // const childrenComponent = React.Children.map(children, (child, i) => {
     //   const childElement =
